@@ -1,0 +1,48 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Caches
+.ipynb_checkpoints/
+
+# Environments
+.env
+.venv
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
+
+# Jupyter Notebook
+.ipynb_checkpoints
+*.nbconvert.ipynb
+
+# VSCode
+.vscode/
+
+# macOS
+.DS_Store
+
+# Python-specific
+*.log
+*.pot
+*.pyc
+*.pyo
+
+# PyCharm
+.idea/
+
+# Data files
+*.csv
+*.xls
+*.xlsx
+
+# Git
+*.orig
+
+# Other
+*.sqlite3
+*.db
+*.sqlite
