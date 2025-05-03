@@ -1,92 +1,48 @@
 # desafio01.py
 
+import os
 import pandas as pd
-import requests
-import glob
-from pathlib import Path
 
-# ----------------------------
-# Instalação (caso necessário):
-# pip install pandas pyarrow
-# ----------------------------
+# Definir o caminho base da pasta de dados
+caminho_base = os.path.join("..", "dados")
 
-def criar_pastas():
-    """Cria diretórios para armazenar os arquivos"""
-    Path("dados/emprestimos").mkdir(parents=True, exist_ok=True)
-    Path("dados/exemplares").mkdir(parents=True, exist_ok=True)
+# Verificar se o diretório existe
+if not os.path.exists(caminho_base):
+    raise FileNotFoundError(f"Pasta de dados não encontrada em: {caminho_base}")
 
-def baixar_arquivos_emprestimos():
-    """Baixa os arquivos CSV de empréstimos por ano e semestre"""
-    lista_emprestimos = [f'{ano}{sem}' for ano in range(2010, 2021) for sem in [1, 2] if not (ano == 2020 and sem == 2)]
-    
-    for ano in lista_emprestimos:
-        url = f"https://raw.githubusercontent.com/franciscofoz/7_Days_of_Code_Alura-Python-Pandas/main/Dia_1-Importando_dados/Datasets/dados_emprestimos/emprestimos-{ano}.csv"
-        r = requests.get(url)
-        with open(f"dados/emprestimos/emprestimos-{ano}.csv", "wb") as f:
-            f.write(r.content)
+# Listar todos os arquivos da pasta
+arquivos = os.listdir(caminho_base)
 
-def baixar_arquivo_acervo():
-    """Baixa o arquivo .parquet com os dados do acervo"""
-    url = "https://github.com/franciscofoz/7_Days_of_Code_Alura-Python-Pandas/raw/main/Dia_1-Importando_dados/Datasets/dados_exemplares.parquet"
-    r = requests.get(url)
-    with open("dados/exemplares/dados_exemplares.parquet", "wb") as f:
-        f.write(r.content)
+# Verificar quais arquivos estão presentes
+print("Arquivos encontrados na pasta dados:", arquivos)
 
-def carregar_e_concatenar_csvs():
-    """Lê e concatena todos os arquivos CSV da pasta empréstimos"""
-    caminhos_csv = glob.glob("dados/emprestimos/*.csv")
-    dataframes = []
-    for caminho in caminhos_csv:
-        try:
-            df = pd.read_csv(caminho, sep=',', encoding='utf-8')
-            dataframes.append(df)
-        except Exception as e:
-            print(f"Erro ao ler {caminho}: {e}")
-    
-    if not dataframes:
-        raise ValueError("Nenhum arquivo CSV foi carregado corretamente.")
-    return pd.concat(dataframes, ignore_index=True)
+# Inicializar os DataFrames como None
+df_emprestimos = None
+df_exemplares = None
 
-def tratar_dados_emprestimos(df):
-    """Limpa e trata os dados do DataFrame de empréstimos"""
-    df = df.drop_duplicates()
-    
-    # Converte colunas de datas
-    df['data_devolucao'] = pd.to_datetime(df['data_devolucao'], errors='coerce')
-    df['data_emprestimo'] = pd.to_datetime(df['data_emprestimo'], errors='coerce')
-    df['data_renovacao'] = pd.to_datetime(df['data_renovacao'], errors='coerce')
+# Verificar e carregar os dados de empréstimos
+if "emprestimos.csv" in arquivos:
+    df_emprestimos = pd.read_csv(os.path.join(caminho_base, "emprestimos.csv"))
+elif "emprestimos.parquet" in arquivos:
+    df_emprestimos = pd.read_parquet(os.path.join(caminho_base, "emprestimos.parquet"))
+else:
+    raise FileNotFoundError("Arquivo de empréstimos não encontrado (CSV ou Parquet).")
 
-    return df
+# Verificar e carregar os dados de exemplares
+if "exemplares.csv" in arquivos:
+    df_exemplares = pd.read_csv(os.path.join(caminho_base, "exemplares.csv"))
+elif "exemplares.parquet" in arquivos:
+    df_exemplares = pd.read_parquet(os.path.join(caminho_base, "exemplares.parquet"))
+else:
+    raise FileNotFoundError("Arquivo de exemplares não encontrado (CSV ou Parquet).")
 
-def carregar_acervo():
-    """Lê o arquivo de acervo em formato parquet"""
-    return pd.read_parquet('dados/exemplares/dados_exemplares.parquet')
+# Verificar se os DataFrames foram carregados corretamente
+if df_emprestimos is None or df_exemplares is None:
+    raise ValueError("Erro ao carregar os dados.")
 
-def mesclar_dados(df_emprestimos, df_acervo):
-    """Realiza a junção dos dados de empréstimos com os de acervo"""
-    df_completo = pd.merge(df_emprestimos, df_acervo, on='codigo_barras', how='left')
+# Unir os DataFrames pelo campo 'codigo_exemplar'
+df = pd.merge(df_emprestimos, df_exemplares, on="codigo_exemplar", how="inner")
 
-    faltando = df_completo['id_exemplar'].isnull().sum()
-    percentual = (faltando / len(df_completo)) * 100
-    print(f"Linhas sem correspondência no acervo: {faltando} ({percentual:.2f}%)")
-
-    return df_completo
-
-def main():
-    print(">>> Iniciando o desafio 01...")
-    criar_pastas()
-    baixar_arquivos_emprestimos()
-    baixar_arquivo_acervo()
-    
-    df_emprestimos = carregar_e_concatenar_csvs()
-    df_emprestimos = tratar_dados_emprestimos(df_emprestimos)
-
-    df_acervo = carregar_acervo()
-    df_completo = mesclar_dados(df_emprestimos, df_acervo)
-
-    # Exporta o resultado final como Parquet (opcional)
-    df_completo.to_parquet("dados/df_completo.parquet", index=False)
-    print(">>> Desafio 01 finalizado com sucesso!")
-
-if __name__ == "__main__":
-    main()
+# Exibir as primeiras linhas do DataFrame unificado
+print("DataFrame unificado:")
+print(df.head())
