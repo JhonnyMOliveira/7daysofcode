@@ -1,5 +1,8 @@
 import pandas as pd
 
+# Realizando o Import do DataSet
+dataset_completo = pd.read_csv('../desafio04/dataset_completo.csv')
+
 def gerar_tabela(df, coluna):
     """
     Gera uma tabela de frequência absoluta e relativa (percentual)
@@ -20,10 +23,10 @@ def gerar_tabela(df, coluna):
     return tabela
 
 # Chamadas para variáveis categóricas analisadas
-tabela_vinculo = gerar_tabela(df, 'tipo_vinculo_usuario')
-tabela_colecao = gerar_tabela(df, 'colecao')
-tabela_biblioteca = gerar_tabela(df, 'biblioteca')
-tabela_cdu = gerar_tabela(df, 'classe_cdu')
+tabela_vinculo = gerar_tabela(dataset_completo, 'tipo_vinculo_usuario')
+tabela_colecao = gerar_tabela(dataset_completo, 'colecao')
+tabela_biblioteca = gerar_tabela(dataset_completo, 'biblioteca')
+tabela_cdu = gerar_tabela(dataset_completo, 'classe_cdu')
 
 # Exibindo os resultados
 print("\nDistribuição por Tipo de Vínculo:\n", tabela_vinculo)
