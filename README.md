@@ -1,90 +1,147 @@
 # 7DaysOfCode - Python e Pandas (Alura)
 
-Este repositório contém minha participação no desafio **#7DaysOfCode** da Alura, com foco em análise de dados usando **Python** e **Pandas**. A cada dia, é proposto um novo exercício com base em dados reais das bibliotecas da UFRN (Universidade Federal do Rio Grande do Norte), envolvendo etapas fundamentais de um projeto de ciência de dados.
+Este repositório contém minha participação no desafio **#7DaysOfCode** da Alura, com foco em análise de dados usando **Python** e **Pandas**. A cada dia, um novo exercício foi proposto com base em dados reais das bibliotecas da UFRN (Universidade Federal do Rio Grande do Norte), envolvendo etapas fundamentais de um projeto de ciência de dados.
 
 Cada desafio está em sua própria pasta com:
-- Script Python (`.py`)
-- Jupyter Notebook (`.ipynb`)
-- Um `README.md` com o enunciado e explicações do desafio
+- ✅ Script Python (`.py`)
+- ✅ Jupyter Notebook (`.ipynb`)
+- ✅ `README.md` com resumo do desafio
 
 ---
 
 ## ✅ Desafio 01 - Importação e Organização dos Dados
 
-**Objetivo:**
+**Objetivo:**  
 Importar, organizar e tratar dados reais de empréstimos e acervo das bibliotecas da UFRN.
 
 **Tarefas:**
-- Automatizar o download e a organização de mais de 20 arquivos CSV.
-- Tratar valores nulos e remover linhas duplicadas.
-- Unificar os dados de acervo e empréstimos por meio de merge.
+- Download automatizado de +20 arquivos.
+- Unificação dos dados de empréstimos e acervo via `merge`.
+- Conversão de colunas para datetime.
+- Remoção de valores nulos e duplicados.
 
-📁 Acesse a pasta: `/desafio01`
+📁 Pasta: `/desafio01`
 
 ---
 
 ## 🧹 Desafio 02 - Limpeza e Enriquecimento de Dados
 
-**Objetivo:**
-Realizar a limpeza e enriquecimento dos dados para torná-los mais úteis e preparados para análises.
+**Objetivo:**  
+Preparar os dados para análise e enriquecer com informações categóricas.
 
 **Tarefas:**
-- Excluir a coluna `registro_sistema` que não é relevante para a análise.
-- Converter a coluna `matricula_ou_siape` para o formato string.
-- Criar uma nova coluna com base na `localizacao`, mapeando os números para suas respectivas classes gerais segundo a **CDU (Classificação Decimal Universal)**:
+- Conversão de dados para tipos apropriados.
+- Criação da coluna `classe_cdu` com base na Classificação Decimal Universal.
+- Eliminação de colunas irrelevantes.
 
-```
-000 a 099: Generalidades. Ciência e conhecimento.
-100 a 199: Filosofia e psicologia.
-200 a 299: Religião.
-300 a 399: Ciências sociais.
-400 a 499: Classe vaga.
-500 a 599: Matemática e ciências naturais.
-600 a 699: Ciências aplicadas.
-700 a 799: Belas artes.
-800 a 899: Linguagem. Língua. Linguística.
-900 a 999: Geografia. Biografia. História.
-```
-
-📁 Acesse a pasta: `/desafio02`
+📁 Pasta: `/desafio02`
 
 ---
 
-## 🗂️ Organização
+## 📈 Desafio 03 - Análise Temporal de Empréstimos
 
-```
-7DaysOfCode-Pandas/
-│
+**Objetivo:**  
+Analisar a evolução dos empréstimos ao longo dos anos, meses e horas.
+
+**Tarefas:**
+- Agrupamento e visualização por ano, mês e hora.
+- Gráficos de linha e barra para apoio à gestão da biblioteca.
+- Análises sobre sazonalidade e carga de trabalho por faixa horária.
+
+📁 Pasta: `/desafio03`
+
+---
+
+## 🧮 Desafio 04 - Análise de Variáveis Categóricas
+
+**Objetivo:**  
+Explorar variáveis categóricas para entender o perfil dos usuários e do acervo.
+
+**Variáveis analisadas:**
+- Tipo de vínculo do usuário
+- Coleção
+- Biblioteca
+- Classe CDU
+
+**Entregas:**
+- Tabelas de frequência e percentual.
+- Função automatizada para geração de análises por categoria.
+- Insights sobre perfil de uso e oportunidades de melhoria.
+
+📁 Pasta: `/desafio04`
+
+---
+
+## 📊 Desafio 05 - Distribuição de Empréstimos via Boxplot
+
+**Objetivo:**  
+Analisar a distribuição mensal de empréstimos (2010-2020) para alunos de graduação e pós-graduação.
+
+**Tarefas:**
+- Filtragem da coleção mais frequente.
+- Agrupamento mensal por tipo de usuário e ano.
+- Criação de gráficos de boxplot para cada grupo.
+- Análise comparativa de comportamento e dispersão dos dados.
+
+📁 Pasta: `/desafio05`
+
+---
+
+## 🧾 Desafio 06 - Empréstimos por Curso
+
+**Objetivo:**  
+Identificar a quantidade de empréstimos entre 2015 e 2020 por cursos de graduação selecionados.
+
+**Cursos analisados:**
+- Biblioteconomia, Ciências Sociais, Comunicação Social, Direito, Filosofia, Pedagogia.
+
+**Tarefas:**
+- Leitura de dados em Excel e JSON.
+- Padronização e unificação por matrícula.
+- Criação de tabela dinâmica com totais por curso e ano.
+
+📁 Pasta: `/desafio06`
+
+---
+
+## 📉 Desafio 07 - Diferença Percentual e Tabela Estilizada em HTML
+
+**Objetivo:**  
+Calcular a diferença percentual de empréstimos de pós-graduação entre os anos de 2017-2019 e previsão para 2022.
+
+**Tarefas:**
+- Cálculo da variação percentual entre os anos.
+- Geração de tabela em HTML com estilização e cores por valor.
+- Opcional: Adição de estilos CSS conforme exigência do Front-End.
+
+📁 Pasta: `/desafio07`
+
+---
+
+## 📂 Organização do Repositório
+
+7daysofcode/
 ├── desafio01/
-│   ├── desafio01.ipynb
-│   ├── desafio01.py
-│   └── README.md
-│
 ├── desafio02/
-│   ├── desafio02.ipynb
-│   ├── desafio02.py
-│   └── README.md
-│
-└── README.md  <- este arquivo geral
-```
+├── desafio03/
+├── desafio04/
+├── desafio05/
+├── desafio06/
+├── desafio07/
+└── README.md ← este arquivo
 
----
-
-## 🚧 Em andamento...
-
-📌 Em breve: desafio03, desafio04...
 
 ---
 
 ## 🔗 Referências
+
 - [Alura - 7DaysOfCode](https://7daysofcode.io/)
-- Dados reais extraídos do repositório da UFRN
+- [Dados da UFRN (GitHub)](https://github.com/franciscofoz/7_Days_of_Code_Alura-Python-Pandas)
+- [Classificação CDU](https://pt.wikipedia.org/wiki/Classificação_decimal_universal)
 
 ---
 
-📅 Projeto iniciado em: **Abril de 2025**
-
-👤 Autor: **Jhonny Marcelo de Oliveira**
-
-📫 Conecte-se comigo no [LinkedIn]([https://www.linkedin.com](https://www.linkedin.com/in/jhonny-oliveira-247826114/)) e acompanhe a jornada #7DaysOfCode!
-
+📅 Projeto iniciado: **Abril de 2025**  
+👤 Autor: **Jhonny Marcelo de Oliveira**  
+📫 Acompanhe no LinkedIn: [Jhonny M. Oliveira](https://www.linkedin.com/in/jhonny-oliveira-247826114/)  
+🚀 Jornada: #7DaysOfCode #Python #Pandas #DataScience #AprendizadoContínuo
