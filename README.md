@@ -138,6 +138,8 @@ Calcular a diferença percentual de empréstimos de pós-graduação entre os an
 - [Alura - 7DaysOfCode](https://7daysofcode.io/)
 - [Dados da UFRN (GitHub)](https://github.com/franciscofoz/7_Days_of_Code_Alura-Python-Pandas)
 - [Classificação CDU](https://pt.wikipedia.org/wiki/Classificação_decimal_universal)
+- [Dados dos Usuários 1](https://github.com/FranciscoFoz/7_Days_of_Code_Alura-Python-Pandas/blob/main/Dia_6-Novos_dados_novas_analises/Datasets/matricula_alunos.xlsx?utm_medium=email&_hsenc=p2ANqtz-8zoATLb0Llchc_xNQMNrU9Il2Ea_myaALMMf3RQNdkqcpLen7GAoXEIXUprm9W7bOz3R2wW7kYkFVNBKuRAYRtLxUQng&_hsmi=270881120&utm_content=270881120&utm_source=hs_automation)
+- [Dados dos Usuários 2](https://raw.githubusercontent.com/FranciscoFoz/7_Days_of_Code_Alura-Python-Pandas/main/Dia_6-Novos_dados_novas_analises/Datasets/cadastro_alunos.json?utm_medium=email&_hsenc=p2ANqtz-8sjrgRO5osC5qNih1TwmGJIcsZQ9Mvkuw8bGgFr4rzhVM7CUUic3Mg5c_bmnzOsHPW0DcZmt3TfIww_46OT4fLIF4vag&_hsmi=270881120&utm_content=270881120&utm_source=hs_automation)
 
 ---
 
