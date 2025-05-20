@@ -32,6 +32,7 @@ df_json['matricula_ou_siape'] = df_json['matricula_ou_siape'].astype(str)
 
 # === 3. Unificação das duas bases de alunos ===
 df_alunos = pd.concat([df_excel, df_json], ignore_index=True)
+df_alunos.to_csv('dados/df_alunos.csv')
 
 # === 4. Filtragem por cursos de interesse e tipo de vínculo ===
 cursos_interesse = [
