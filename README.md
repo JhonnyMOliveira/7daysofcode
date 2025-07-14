@@ -146,4 +146,4 @@ Calcular a diferença percentual de empréstimos de pós-graduação entre os an
 📅 Projeto iniciado: **Abril de 2025**  
 👤 Autor: **Jhonny Marcelo de Oliveira**  
 📫 Acompanhe no LinkedIn: [Jhonny M. Oliveira](https://www.linkedin.com/in/jhonnymoliveira/)  
-🚀 Jornada: #7DaysOfCode #Python #Pandas #DataScience #AprendizadoContínuo
+🚀 Engenheiro Eletricista com Ênfase em Telecomunicações | Especialista em Redes | Entusiasta por soluções em Python, Automações e Transformação Digital.
